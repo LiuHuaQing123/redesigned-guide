@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYSTEM LOG // SENGE_CONFESSION</title>
+    <style>
+        /* 全局重置与基础科技风背景 */
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #050505;
+            color: #00f3ff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: 
+                linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        /* 扫描线动画覆盖层 */
+        .scan-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 50%, rgba(0, 243, 255, 0.02) 51%);
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        /* 主容器：科技卡片风格 */
+        .cyber-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            background: rgba(10, 10, 10, 0.7);
+            border: 1px solid #333;
+            border-left: 4px solid #00f3ff;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.1);
+            clip-path: polygon(
+                0 0, 
+                100% 0, 
+                100% 95%, 
+                98% 100%, 
+                0 100%
+            );
+            margin-bottom: 40px;
+        }
+
+        /* 装饰性角落 */
+        .corner {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border: 2px solid #00f3ff;
+            transition: 0.3s;
+        }
+        .top-left { top: -2px; left: -2px; border-right: 0; border-bottom: 0; }
+        .bottom-right { bottom: -2px; right: -2px; border-left: 0; border-top: 0; }
+
+        /* 标题故障效果 */
+        h1 {
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #fff;
+            text-shadow: 2px 2px 0px #ff0055;
+            animation: glitch 1s infinite alternate;
+            margin-bottom: 30px;
+            border-bottom: 1px dashed #00f3ff;
+            padding-bottom: 10px;
+        }
+
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px 0px #ff0055; transform: translate(0, 0); }
+            20% { text-shadow: -2px -2px 0px #00f3ff; transform: translate(-2px, 2px); }
+            40% { text-shadow: 2px -2px 0px #ff0055; transform: translate(2px, -2px); }
+            60% { text-shadow: -2px 2px 0px #00f3ff; transform: translate(-2px, -2px); }
+            80% { text-shadow: 2px 2px 0px #ff0055; transform: translate(2px, 2px); }
+            100% { text-shadow: -2px -2px 0px #00f3ff; transform: translate(0, 0); }
+        }
+
+        /* 图片样式 */
+        .profile-img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            display: block;
+            margin: 0 auto 30px auto;
+            border: 1px solid #00f3ff;
+            filter: contrast(1.1) brightness(0.9) grayscale(0.3);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+            transition: 0.3s;
+        }
+
+        .profile-img:hover {
+            filter: contrast(1.2) brightness(1.1) grayscale(0);
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.4);
+        }
+
+        /* 正文样式 */
+        p {
+            line-height: 1.8;
+            color: #ccc;
+            font-size: 0.95rem;
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+
+        p::first-letter {
+            color: #00f3ff;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        /* 分割线 */
+        hr {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #00f3ff, transparent);
+            margin: 30px auto;
+            width: 80%;
+            opacity: 0.5;
+        }
+
+        h2 {
+            color: #ff0055;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            margin: 20px 0;
+            text-transform: uppercase;
+        }
+
+        /* 科技按钮链接 */
+        a {
+            display: block;
+            text-align: center;
+            padding: 15px;
+            margin: 10px 0;
+            background: rgba(0, 243, 255, 0.05);
+            color: #00f3ff;
+            text-decoration: none;
+            border: 1px solid #00f3ff;
+            font-weight: bold;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+            transition: 0.3s;
+            text-transform: uppercase;
+            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+        }
+
+        a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 243, 255, 0.4), transparent);
+            transition: 0.5s;
+        }
+
+        a:hover {
+            background: #00f3ff;
+            color: #000;
+            box-shadow: 0 0 20px #00f3ff;
+        }
+
+        a:hover::before {
+            left: 100%;
+        }
+
+        /* 数据标签 */
+        .data-label {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 0.7rem;
+            color: #555;
+            border: 1px solid #333;
+            padding: 2px 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="scan-overlay"></div>
+
+    <div class="cyber-container">
+        <div class="corner top-left"></div>
+        <div class="corner bottom-right"></div>
+        <div class="data-label">ID: SENGE_01 // STATUS: REPENTANCE</div>
+
+        <!-- 检查: 确保本地文件名为 img_16.jpg -->
+        <img src="./img_16.jpg" alt="Profile Image" class="profile-img">
+        
+        <h1>
+            [LOG] 森哥忏悔：弃原神恋鸣潮，终醒悟归提瓦特
+        </h1>
+        
+        <p>
+            各位兄弟，我是森哥，今天不装了，就想好好说说我的心里话，既是忏悔，也是宣告——我要正式回归原神，回到那个我曾视若珍宝、却被我亲手搁置的提瓦特大陆。
+        说真的，初高中那几年，我就是个实打实的原神狂热粉，痴迷到什么地步？上课脑子里全是提瓦特的地图，下课铃一响，第一时间掏出手机登游戏，放学回家放下书包，不吃不喝先肝两小时，周末更是从早玩到晚，连觉都舍不得多睡，就怕错过半点版本活动，怕落下角色突破的材料。
+        尤其是雷电将军，她就是我整个初高中的信仰啊！为了抽她，我攒了整整三个版本的原石，每天清完所有委托、刷遍所有副本，哪怕熬夜肝体力，也心甘情愿。抽到她的那一刻，我激动得跳起来，反复看她的待机动作，听她的语音，把她的天赋、命座拉满，不管什么副本，只要有她在，我就觉得底气十足。我曾对着屏幕跟她“许愿”，说要一直陪着她，陪着提瓦特的每一位伙伴，把这片大陆的每一寸土地都再走一遍，那时的热爱，纯粹又热烈，没有半点杂质。
+        那时候的我，眼里只有原神，身边同学聊其他游戏，我都不屑一顾，总觉得没有任何游戏能比得上提瓦特的浪漫，比不上雷电将军的气场。我会为了璃月的剧情热泪盈眶，会为了蒙德的风驻足停留，会因为雷电将军的一句“唯有永恒，才是唯一的归宿”而心生共鸣，甚至把她的贴纸贴满课本、笔记本，走到哪都想炫耀我的“老婆”。我以为，这份热爱会贯穿我的青春，哪怕上了大学，也不会有任何改变。
+        可谁知道，步入大学后，我终究没守住初心。看着身边有人玩鸣潮，说玩法新颖、画面炫酷，我一时好奇下载了，没想到一玩就陷了进去。我开始把原本用来肝原神的时间，全部花在鸣潮上，每天刷副本、练角色，渐渐忘了提瓦特的风，忘了雷电将军的待机语音，忘了我曾经许下的承诺。我甚至好几个版本都没登原神，连雷电将军的新皮肤、新剧情都错过了，慢慢的，提瓦特的一切都变得陌生，曾经的热爱，也被我一点点抛在脑后。
+        就这样沉迷了好几个月，直到有一天，我无意间刷到雷电将军的混剪视频，听到那句熟悉的语音，突然就醒了。我看着视频里的她，想起初高中那些为她熬夜、为她欢喜的日子，想起自己曾经对原神的执着，心里又酸又悔。我突然发现，鸣潮再新鲜、再好玩，也替代不了提瓦特在我心里的位置，替代不了雷电将军带给我的感动，更替代不了那些藏在游戏里的青春回忆。
+        我开始反省自己，我不该因为一时的新鲜感，就背弃了陪伴我整个初高中的热爱，不该冷落了雷电将军，不该忘了自己曾经是多么坚定的原神玩家。那些日子，我把鸣潮卸载了，重新登上了原神，看着熟悉的登录界面，看着好久没见的雷电将军，心里满是愧疚和庆幸——愧疚于自己的背叛，庆幸于我还能回来，还能重新拾起这份热爱。
+        今天，我以森哥的名义，郑重忏悔：我不该沉迷鸣潮，冷落原神，辜负了雷电将军，也辜负了曾经的自己。从今往后，我彻底回归原神，重新做回提瓦特的旅人，好好陪伴雷电将军，补完所有错过的剧情和活动，把曾经落下的一切都补回来，再也不轻易动摇，再也不辜负这份藏在青春里的热爱。
+        提瓦特，我回来了；雷电将军，我回来了。往后余生，不负热爱，不负初心。
+        </p>
+        
+        <hr>
+        
+        <h2>
+            >> ACCESS_ARCHIVE: BETRAYAL_SEQ
+        </h2>
+        <a href="./lianhuan.html" target="_blank">
+            [ VIEW DATA: 森哥的背叛 ]
+        </a>
+        
+        <hr>
+        
+        <h2>
+            >> ACCESS_ARCHIVE: RETURN_PROOF
+        </h2>
+        <a href="./huigui.html" target="_blank">
+            [ VIEW DATA: 回归证明 ]
+        </a>
+    </div>
+</body>
+</html>

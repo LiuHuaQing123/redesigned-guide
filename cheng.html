@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROFILE // RISE_OF_THE_KING</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #050505;
+            color: #00f3ff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            background-image: 
+                linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #00f3ff;
+            padding-bottom: 10px;
+            text-shadow: 0 0 5px rgba(0, 243, 255, 0.5);
+        }
+
+        /* 二级接口：时间轴/卡片样式 */
+        .timeline-container {
+            width: 100%;
+            max-width: 600px;
+            position: relative;
+        }
+
+        /* 中心线 */
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #00f3ff;
+            box-shadow: 0 0 10px #00f3ff;
+        }
+
+        .stage-card {
+            position: relative;
+            margin-left: 50px;
+            margin-bottom: 40px;
+            background: rgba(10, 10, 10, 0.8);
+            border: 1px solid #333;
+            padding: 15px;
+            transition: 0.3s;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 95% 100%, 0 100%);
+        }
+
+        .stage-card:hover {
+            border-color: #00f3ff;
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+            transform: translateX(10px);
+        }
+
+        /* 节点圆点 */
+        .stage-card::before {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 20px;
+            width: 14px;
+            height: 14px;
+            background: #050505;
+            border: 2px solid #00f3ff;
+            border-radius: 50%;
+            box-shadow: 0 0 5px #00f3ff;
+        }
+
+        .stage-title {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .stage-img {
+            width: 100%;
+            height: auto;
+            border: 1px solid #444;
+            filter: grayscale(0.5);
+            transition: 0.3s;
+        }
+
+        .stage-card:hover .stage-img {
+            filter: grayscale(0);
+        }
+
+        .del-link {
+            margin-top: 50px;
+            opacity: 0.5;
+            text-decoration: line-through;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>// SUBJECT_EVOLUTION_LOG</h1>
+    
+    <div class="timeline-container">
+        <!-- 阶段 1 -->
+        <div class="stage-card">
+            <div class="stage-title">PHASE_01: RECRUIT</div>
+            <strong>此时我还是个小兵</strong>
+            <br><br>
+            <!-- 检查: 确保本地文件名为 img_21.jpg -->
+            <img src="./img_21.jpg" alt="shui zhai" class="stage-img">
+        </div>
+
+        <!-- 阶段 2 -->
+        <div class="stage-card">
+            <div class="stage-title">PHASE_02: SUPERVISOR</div>
+            <strong>成长成yc网吧主管</strong>
+            <br><br>
+            <!-- 检查: 确保本地文件名为 img_19.jpg -->
+            <img src="./img_19.jpg" alt="yc" class="stage-img">
+        </div>
+
+        <!-- 阶段 3 -->
+        <div class="stage-card">
+            <div class="stage-title">PHASE_03: ENFORCER</div>
+            <strong>成长成流塘扛把子</strong>
+            <br><br>
+            <!-- 检查: 确保本地文件名为 img_18.jpg -->
+            <img src="./img_18.jpg" alt="lv tong" class="stage-img">
+        </div>
+
+        <!-- 阶段 4 -->
+        <div class="stage-card">
+            <div class="stage-title">PHASE_04: MELANCHOLY_GOD</div>
+            <strong>成长成最忧郁的神</strong>
+            <br><br>
+            <!-- 检查: 确保本地文件名为 img_20.jpg -->
+            <img src="./img_20.jpg" alt="yu zhou" class="stage-img">
+        </div>
+
+        <!-- 阶段 5 -->
+        <div class="stage-card">
+            <div class="stage-title">PHASE_05: GAMBLING_KING</div>
+            <strong>终成水寨赌王</strong>
+            <br><br>
+            <!-- 检查: 确保本地文件名为 img_15.jpg -->
+            <img src="./img_15.jpg" alt="shui zhai" class="stage-img">
+        </div>
+    </div>
+
+    <div class="del-link">
+        <a href="https://df.qq.com/cp/a20240906fab/index-bing.html?msclkid=44ec1cde72071843e2ee753a0c7f3052">申请查看豪感度</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>流塘姜葱蒜 - SYSTEM LINK</title>
+    <style>
+        /* 全局重置与基础科技风背景 */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace; /* 等宽字体增强科技感 */
+            background-color: #050505;
+            color: #00f3ff; /* 霓虹青 */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: 
+                linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px; /* 网格背景 */
+        }
+
+        /* 标题故障效果 */
+        h1 {
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            position: relative;
+            text-shadow: 2px 2px 0px #ff0055;
+            animation: glitch 1s infinite alternate;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px 0px #ff0055; transform: translate(0, 0); }
+            20% { text-shadow: -2px -2px 0px #00f3ff; transform: translate(-2px, 2px); }
+            40% { text-shadow: 2px -2px 0px #ff0055; transform: translate(2px, -2px); }
+            60% { text-shadow: -2px 2px 0px #00f3ff; transform: translate(-2px, -2px); }
+            80% { text-shadow: 2px 2px 0px #ff0055; transform: translate(2px, 2px); }
+            100% { text-shadow: -2px -2px 0px #00f3ff; transform: translate(0, 0); }
+        }
+
+        /* 卡片容器：破碎玻璃风格 */
+        .card {
+            background: rgba(20, 20, 20, 0.6);
+            border: 1px solid #333;
+            border-left: 4px solid #00f3ff;
+            padding: 20px;
+            margin-bottom: 40px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.1);
+            transition: all 0.3s ease;
+            clip-path: polygon(
+                0 0, 
+                100% 0, 
+                100% 85%, 
+                95% 100%, 
+                0 100%
+            ); /* 底部切角效果 */
+        }
+
+        .card:hover {
+            transform: scale(1.02) skewX(-1deg);
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.3);
+            border-color: #00f3ff;
+        }
+
+        /* 图片样式：增加噪点和扫描线感 */
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: contrast(1.2) brightness(0.9) grayscale(0.2);
+            border: 1px solid #444;
+            margin-bottom: 15px;
+            transition: filter 0.3s;
+        }
+
+        .card:hover img {
+            filter: contrast(1.1) brightness(1.1) grayscale(0);
+        }
+
+        /* 链接按钮：科技按钮风格 */
+        a {
+            display: block;
+            text-align: center;
+            padding: 12px;
+            background: transparent;
+            color: #00f3ff;
+            text-decoration: none;
+            border: 1px solid #00f3ff;
+            font-weight: bold;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 243, 255, 0.4), transparent);
+            transition: 0.5s;
+        }
+
+        a:hover {
+            background: #00f3ff;
+            color: #000;
+            box-shadow: 0 0 20px #00f3ff;
+        }
+
+        a:hover::before {
+            left: 100%;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #00f3ff, transparent);
+            width: 50%;
+            margin: 10px auto 40px auto;
+            opacity: 0.5;
+        }
+
+        /* 装饰性角落标记 */
+        .corner {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border: 2px solid #00f3ff;
+            transition: 0.3s;
+        }
+        .top-left { top: -2px; left: -2px; border-right: 0; border-bottom: 0; }
+        .bottom-right { bottom: -2px; right: -2px; border-left: 0; border-top: 0; }
+
+        .card:hover .corner {
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 修改: 请将您的音频文件重命名为 bgm.mp3 并放在根目录 -->
+    <!-- 如果文件名不同，请修改 src 属性，例如 src="./my-music.mp3" -->
+    <audio id="bgm" src="./bgm.mp3" autoplay loop preload="auto"></audio>
+
+    <h1>SYSTEM DATA // 流塘姜葱蒜</h1>
+
+    <div class="card">
+        <div class="corner top-left"></div>
+        <div class="corner bottom-right"></div>
+        
+        <!-- 检查: 确保本地文件名为 img_4.jpg -->
+        <img src="./img_4.jpg" alt="1号姜葱蒜"> 
+        
+        <a href="./a1.html" target="_blank" rel="noopener noreferrer">
+            [ ACCESS DATA 1 ]
+        </a>
+    </div>
+    
+    <hr>
+    
+    <div class="card">
+        <div class="corner top-left"></div>
+        <div class="corner bottom-right"></div>
+
+        <!-- 检查: 确保本地文件名为 img_17.jpg -->
+        <img src="./img_17.jpg" alt="2号姜葱蒜">
+        
+        <a href="./a2.html" target="_blank" rel="noopener noreferrer">
+            [ ACCESS DATA 2 ]
+        </a>
+    </div>
+
+    <script>
+        // 优化: 增强自动播放逻辑，尝试在页面加载时立即播放，并在用户交互时强制播放
+        document.addEventListener('DOMContentLoaded', function() {
+            var audio = document.getElementById("bgm");
+            
+            // 尝试立即播放
+            var playPromise = audio.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                    console.log("Audio playing automatically");
+                })
+                .catch(error => {
+                    console.log("Autoplay prevented, waiting for interaction");
+                });
+            }
+
+            // 监听任何用户交互以解锁音频播放
+            var unlockAudio = function() {
+                if (audio.paused) {
+                    audio.play().catch(function(e) {
+                        console.log("Play failed on interaction", e);
+                    });
+                }
+                document.removeEventListener('click', unlockAudio);
+                document.removeEventListener('keydown', unlockAudio);
+                document.removeEventListener('touchstart', unlockAudio);
+            };
+
+            document.addEventListener('click', unlockAudio);
+            document.addEventListener('keydown', unlockAudio);
+            document.addEventListener('touchstart', unlockAudio);
+        });
+    </script>
+</body>
+</html>

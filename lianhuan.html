@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>连环画欣赏</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* 美化：使用柔和的渐变背景 */
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        /* 新增：标题样式 */
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+            letter-spacing: 2px;
+        }
+
+        .comic-container {
+            max-width: 600px; /* 稍微限制最大宽度，使阅读体验更佳 */
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            /* 美化：添加卡片背景和圆角 */
+            background-color: rgba(255, 255, 255, 0.6);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(10px); /* 毛玻璃效果 */
+        }
+
+        .comic-image {
+            max-width: 100%;
+            height: auto;
+            width: 100%; /* 在容器内自适应宽度 */
+            display: block;
+            /* 美化：增加圆角和更精致的阴影 */
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        /* 美化：鼠标悬停效果 */
+        .comic-image:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 10px;
+            }
+            
+            .comic-container {
+                padding: 15px;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>连环画展示</h1>
+    
+    <div class="comic-container">
+        <!-- 检查: 确保本地文件名为 img_1.jpg -->
+        <img 
+            src="./img_1.jpg" 
+            alt="1号姜葱蒜" 
+            class="comic-image"
+            loading="lazy"
+        >
+        
+        <!-- 检查: 确保本地文件名为 img_2.jpg -->
+        <img 
+            src="./img_2.jpg" 
+            alt="1号姜葱蒜" 
+            class="comic-image"
+            loading="lazy"
+        >
+        
+        <!-- 检查: 确保本地文件名为 img_3.jpg -->
+        <img 
+            src="./img_3.jpg" 
+            alt="1号姜葱蒜" 
+            class="comic-image"
+            loading="lazy"
+        >
+    </div>
+</body>
+</html>
